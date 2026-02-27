@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2v5speb1umua"]
+
+[ext_resource type="Texture2D" uid="uid://b1gij7fiqgb0u" path="res://asets/background/fondoVerde.png" id="1_p57ef"]
+[ext_resource type="PackedScene" uid="uid://duh8vle1w4d00" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://17vi2oidxx05" path="res://asets/background/montanaTRasera.png" id="2_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://b0eoxklryn55x" path="res://asets/background/montanaDelantera.png" id="3_gee14"]
+[ext_resource type="Texture2D" uid="uid://cpsdvy20l8kbq" path="res://asets/background/agua.png" id="4_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://dlilqqewwh3c2" path="res://scenes/coin.tscn" id="19_264po"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(1, -1)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(161, 91)
+texture = ExtResource("1_p57ef")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(161, 91)
+texture = ExtResource("2_u5sy4")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(161, 91)
+texture = ExtResource("3_gee14")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(162, 91)
+texture = ExtResource("4_0tnpc")
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(149, 94)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(3, -7)
+zoom = Vector2(4, 4)
+limit_left = -1400
+limit_top = 0
+limit_right = 9999994
+limit_bottom = 180
+position_smoothing_enabled = true
+
+[node name="coins" type="Node" parent="."]
+
+[node name="coin" parent="coins" instance=ExtResource("19_264po")]
+position = Vector2(1123, 89)
+
+[node name="coin2" parent="coins" instance=ExtResource("19_264po")]
+position = Vector2(1111, 89)
+
+[node name="coin3" parent="coins" instance=ExtResource("19_264po")]
+position = Vector2(1133, 89)
+
+[node name="coin4" parent="coins" instance=ExtResource("19_264po")]
+position = Vector2(1099, 89)
+
+[node name="coin5" parent="coins" instance=ExtResource("19_264po")]
+position = Vector2(1142, 89)
