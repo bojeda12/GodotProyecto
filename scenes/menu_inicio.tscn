@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bhp863vp4jgxk" path="res://scripts/menu_inicio.gd" id="1_5l7p0"]
 [ext_resource type="Texture2D" uid="uid://nohneqhxmovv" path="res://asets/splash/SplashPage.png" id="2_d6xxl"]
 [ext_resource type="Texture2D" uid="uid://cp4uxes3pn3kg" path="res://asets/splash/burbujaGrande.png" id="3_d6xxl"]
+[ext_resource type="Texture2D" uid="uid://dhalwx8j3e5cr" path="res://asets/splash/botonRegular.png" id="4_v4dt1"]
+[ext_resource type="Texture2D" uid="uid://fw72thnw4hgr" path="res://asets/splash/pressedBoton.png" id="5_5psen"]
+[ext_resource type="Texture2D" uid="uid://bpv7h70k3g207" path="res://asets/splash/hoverBoton.png" id="6_euaya"]
 
 [node name="MenuInicio" type="Control" unique_id=1856002252]
 layout_mode = 3
@@ -34,15 +37,6 @@ offset_bottom = 57.0
 scale = Vector2(3.9375596, 3.5287426)
 text = "AVENTURAS DE UN AJOLOTE"
 
-[node name="Label2" type="Label" parent="." unique_id=723350810]
-layout_mode = 0
-offset_left = 429.99997
-offset_top = 554.00006
-offset_right = 644.0
-offset_bottom = 577.00006
-scale = Vector2(1.0705785, 1.7895973)
-text = "Presiona espacio para jugar"
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=2048861439]
 position = Vector2(593, 649.00006)
 scale = Vector2(1.0705785, 1.7895973)
@@ -55,6 +49,74 @@ direction = Vector2(0, -1)
 gravity = Vector2(0, -200)
 initial_velocity_min = 2.0
 initial_velocity_max = 2.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1518030344]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 184.0
+offset_right = 724.32983
+offset_bottom = 256.14044
+scale = Vector2(5.4257736, 4.186279)
+alignment = 1
+
+[node name="BotonInicio" type="TextureButton" parent="VBoxContainer" unique_id=1522433506]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_v4dt1")
+texture_pressed = ExtResource("5_5psen")
+texture_hover = ExtResource("6_euaya")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/BotonInicio" unique_id=1907930318]
+layout_mode = 0
+offset_left = 11.66597
+offset_top = 2.5386353
+offset_right = 106.66597
+offset_bottom = 25.538635
+scale = Vector2(0.47067645, 0.49235085)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 16
+text = "Iniciar juego"
+
+[node name="BotonOpciones" type="TextureButton" parent="VBoxContainer" unique_id=417065600]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_v4dt1")
+texture_pressed = ExtResource("5_5psen")
+texture_hover = ExtResource("6_euaya")
+
+[node name="Label" type="Label" parent="VBoxContainer/BotonOpciones" unique_id=1081120866]
+layout_mode = 1
+offset_left = 17.563744
+offset_top = 3.4706922
+offset_right = 94.704185
+offset_bottom = 26.470692
+scale = Vector2(0.47067645, 0.49235085)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+text = "Opciones"
+
+[node name="BotonSalir" type="TextureButton" parent="VBoxContainer" unique_id=1939029275]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_v4dt1")
+texture_pressed = ExtResource("5_5psen")
+texture_hover = ExtResource("6_euaya")
+
+[node name="Label" type="Label" parent="VBoxContainer/BotonSalir" unique_id=1123480981]
+layout_mode = 0
+offset_left = 26.594711
+offset_top = 3.2692642
+offset_right = 60.59471
+offset_bottom = 26.269264
+scale = Vector2(0.47067645, 0.49235085)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+text = "Salir"
 
 [node name="FadeRect" type="ColorRect" parent="." unique_id=1654905987]
 modulate = Color(0, 0, 0, 0)
