@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://duh8vle1w4d00"]
+[gd_scene format=3 uid="uid://duh8vle1w4d00"]
 
 [ext_resource type="Texture2D" uid="uid://bnuup0eof5i4r" path="res://asets/ajolote/movimientoReposo1.png" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://drufhvvhhuony" path="res://scripts/jugadorAjolote.gd" id="1_tuyoq"]
@@ -62,22 +62,22 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
 radius = 4.9914804
-height = 22.994726
+height = 25.955696
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=1618681524]
 z_index = 5
 collision_layer = 2
 script = ExtResource("1_tuyoq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=808682731]
 position = Vector2(-2, -9)
 scale = Vector2(0.390625, 0.375)
 sprite_frames = SubResource("SpriteFrames_gee14")
 animation = &"swim"
 autoplay = "reposo"
-frame_progress = 0.33628145
+frame_progress = 0.28747302
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -9)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1515084228]
+position = Vector2(-1.0000002, -9.000002)
 rotation = 1.512409
 shape = SubResource("CapsuleShape2D_tuyoq")
