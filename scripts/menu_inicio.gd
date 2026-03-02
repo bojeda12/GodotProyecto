@@ -19,6 +19,7 @@ func _ready():
 # --- FUNCIONES DE LOS BOTONES ---
 
 func _on_inicio_pressed():
+	Config.quitar_musica_menu()
 	iniciar_juego()
 
 func _on_opciones_pressed():

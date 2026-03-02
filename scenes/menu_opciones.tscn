@@ -120,5 +120,6 @@ text = "Atras"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="value_changed" from="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="toggled" from="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/atras" to="." method="_on_atras_pressed"]
