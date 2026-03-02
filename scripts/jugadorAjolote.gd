@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var fuerza_salto = -100.0  # Valor negativo para ir hacia arriba
 
 @onready var sprite = $AnimatedSprite2D
+var salud = 3
 
 func _physics_process(_delta):
 	# 1. Obtener dirección de las flechas
@@ -41,3 +42,17 @@ func actualizar_orientacion():
 		sprite.flip_v = true
 	else:
 		sprite.flip_v = false
+
+func recibir_danio(cantidad):
+	salud -= cantidad
+	print("Salud restante:",salud)
+	
+	#Efectos visuales para que el ajolote se ponga de otro color
+	modulate = Color(1,0,0)
+	await get_tree().create_timer(0.2).timeout
+	modulate = Color(1, 1, 1) # Vuelve a la normalidad
+	if salud <= 0:
+		morir()
+func morir():
+	print("El ajolote murio")
+	get_tree().reload_current_scene()#recargamos la escena
