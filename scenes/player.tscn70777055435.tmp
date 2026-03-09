@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://biehu8w1qpf3r" path="res://asets/ajolote/movimientoReposo4.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://d0tjc8a0a3pc3" path="res://asets/ajolote/nadoajolote.png" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://c03q6obr0all0" path="res://asets/ajolote/disparoBurbuja.png" id="8_smehm"]
-[ext_resource type="Texture2D" uid="uid://dl137s1ikcebl" path="res://asets/ajolote/burbuja.png" id="9_ur7pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
 atlas = ExtResource("2_fjrip")
@@ -105,7 +104,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
 radius = 3.991673
-height = 20.087341
+height = 18.051949
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
 atlas = ExtResource("8_smehm")
@@ -138,18 +137,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4r5pv")
 }],
-"loop": false,
+"loop": true,
 "name": &"EfectoDisparo",
-"speed": 9.0
+"speed": 5.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
-radius = 4.0297627
 
 [node name="Player" type="CharacterBody2D" unique_id=1618681524]
 z_index = 5
-collision_mask = 7
+collision_layer = 2
 script = ExtResource("1_tuyoq")
+velocidad_maxima = null
+aceleracion = null
+friccion = null
+fuerza_salto = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=808682731]
 position = Vector2(-2, -9)
@@ -165,27 +165,9 @@ rotation = 3.0770586
 shape = SubResource("CapsuleShape2D_tuyoq")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1597785816]
-visible = false
 position = Vector2(-2, -19)
 scale = Vector2(0.24337403, 0.23685989)
 sprite_frames = SubResource("SpriteFrames_60mlk")
 animation = &"EfectoDisparo"
-
-[node name="Marker2D" type="Marker2D" parent="." unique_id=238547198]
-position = Vector2(-2, -19)
-scale = Vector2(-678.247, 8.682159)
-
-[node name="CampoFuerza" type="Area2D" parent="." unique_id=923434514]
-visible = false
-position = Vector2(-28, -16)
-scale = Vector2(5.45938, 5.0300756)
-collision_mask = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="CampoFuerza" unique_id=267906018]
-modulate = Color(1, 1, 1, 0.5647059)
-position = Vector2(4.579274, 1.3916293)
-texture = ExtResource("9_ur7pv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CampoFuerza" unique_id=161121945]
-position = Vector2(4.5792747, 1.3916292)
-shape = SubResource("CircleShape2D_y4r1p")
+autoplay = "EfectoDisparo"
+frame_progress = 0.80817485
