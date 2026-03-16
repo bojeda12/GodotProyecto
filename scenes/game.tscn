@@ -162,16 +162,17 @@ position_smoothing_enabled = true
 [node name="coins" type="Node" parent="." unique_id=1443036221]
 
 [node name="coin" parent="coins" unique_id=1105912464 instance=ExtResource("19_264po")]
-position = Vector2(322, 191)
+position = Vector2(282, 246.00002)
+rotation = 3.1824043
 
 [node name="coin2" parent="coins" unique_id=1914907441 instance=ExtResource("19_264po")]
-position = Vector2(296, 191)
+position = Vector2(260, 252)
 
 [node name="coin3" parent="coins" unique_id=1579675309 instance=ExtResource("19_264po")]
-position = Vector2(309, 191)
+position = Vector2(249, 252)
 
 [node name="coin4" parent="coins" unique_id=1469788535 instance=ExtResource("19_264po")]
-position = Vector2(284, 191)
+position = Vector2(271, 252)
 
 [node name="coins2" type="Node" parent="." unique_id=1647257994]
 
@@ -216,7 +217,6 @@ rotation = -0.0022441368
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="HUD" parent="." unique_id=2073984528 instance=ExtResource("15_37s47")]
-visible = false
 
 [node name="SpawnerPeces" parent="." unique_id=809972648 groups=["enemigos"] instance=ExtResource("22_37s47")]
 position = Vector2(164, 70)

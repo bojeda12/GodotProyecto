@@ -2,11 +2,16 @@ extends Node2D
 
 @export var pez_escena: PackedScene 
 @export var radio_generacion = 50.0 # Un poco más de espacio para que no se amontonen
-@export var limite_global = 80 # Ahora es más fácil cambiar el número desde el Inspector
+@export var limite_global = 30 # Ahora es más fácil cambiar el número desde el Inspector
 
 func _on_timer_timeout():
-	# 1. RETRASO ALEATORIO: Evita que los 4 spawners actúen al mismo milisegundo
+	# 1. Verificación de seguridad: ¿Existe todavía el mundo?
+	if not is_inside_tree() or get_tree() == null:
+		return
+	# 2. RETRASO ALEATORIO: Evita que los 4 spawners actúen al mismo milisegundo
 	await get_tree().create_timer(randf_range(0.1, 0.8)).timeout
+	if get_tree() == null:
+		return
 	
 	# 2. VERIFICACIÓN DEL GRUPO: Contamos cuántos peces "etiquetados" hay
 	var peces_vivos = get_tree().get_nodes_in_group("enemigos").size()

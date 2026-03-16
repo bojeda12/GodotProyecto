@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://nd7ha1xdoum"]
+
+[ext_resource type="Texture2D" uid="uid://bvymoelr7qo1f" path="res://asets/splash/EndSplash.png" id="1_3kflo"]
+[ext_resource type="Script" uid="uid://cdp3nawv2fy4h" path="res://scripts/endSplash.gd" id="2_rpya4"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=130678259]
+process_mode = 3
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=838720509]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(28.741327, 16.190847)
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5058824)
+
+[node name="Control" type="Control" parent="." unique_id=948731300]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_rpya4")
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=2108792281]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -334.00003
+offset_top = -205.0
+offset_right = 1074.0
+offset_bottom = 563.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.48943928, 0.4816354)
+texture = ExtResource("1_3kflo")
+
+[node name="Reintentar" type="Label" parent="Control" unique_id=468791011]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 420.0
+offset_right = 525.0
+offset_bottom = 443.0
+scale = Vector2(1.3120795, 1.2917072)
+mouse_filter = 0
+text = "Reintentar"
+
+[node name="Finalizar" type="Label" parent="Control" unique_id=227664394]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 422.0
+offset_right = 716.0
+offset_bottom = 445.0
+scale = Vector2(1.2123753, 1.1126739)
+mouse_filter = 0
+text = "Finalizar"
+
+[connection signal="gui_input" from="Control/Reintentar" to="Control" method="_on_reintentar_gui_input"]
+[connection signal="mouse_entered" from="Control/Reintentar" to="Control" method="_on_reintentar_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Reintentar" to="Control" method="_on_reintentar_mouse_exited"]
+[connection signal="gui_input" from="Control/Finalizar" to="Control" method="_on_finalizar_gui_input"]
+[connection signal="mouse_entered" from="Control/Finalizar" to="Control" method="_on_finalizar_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Finalizar" to="Control" method="_on_finalizar_mouse_exited"]

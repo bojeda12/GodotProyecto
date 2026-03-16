@@ -169,6 +169,8 @@ script = ExtResource("1_k023v")
 scale = Vector2(0.5242111, 0.54278636)
 sprite_frames = SubResource("SpriteFrames_psoci")
 animation = &"atacar"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=447161127]
 scale = Vector2(0.4752924, 0.53977287)

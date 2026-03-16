@@ -19,7 +19,7 @@ var muriendo = false
 
 @onready var efecto_disparo = $AnimatedSprite2D2 
 var burbuja_scene = preload("res://scenes/burbuja.tscn")
-
+var splash_muerte = preload("res://scenes/endSplash.tscn")
 func _ready():
 	efecto_disparo.hide()
 	# 1. ACTUALIZAR AL INICIO: Para que las barras no aparezcan vacías al empezar
@@ -71,11 +71,12 @@ func morir():
 	
 	print("El ajolote ha muerto")
 	# Aquí puedes poner una animación de muerte antes de reiniciar
-	await get_tree().create_timer(0.5).timeout 
+	await get_tree().create_timer(0.1).timeout 
 	
 	# Usamos una validación antes de recargar para evitar el error de Nil
 	if get_tree() != null:
-		get_tree().reload_current_scene()
+		var splash = splash_muerte.instantiate()
+		get_tree().current_scene.add_child(splash)
 
 func disparar_con_efecto():
 	# 4. VALIDACIÓN DE MUNICIÓN: Solo dispara si tiene burbujas
