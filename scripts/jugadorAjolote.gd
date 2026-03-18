@@ -14,7 +14,7 @@ var invulnerable = false
 
 @export var max_burbujas = 6
 var burbujas_actuales = 3 # Cambia a 3 para que empiece con algo de carga
-var salud = 3
+var salud:float = 3.0
 var muriendo = false
 
 @onready var efecto_disparo = $AnimatedSprite2D2 
@@ -43,6 +43,8 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		disparar_con_efecto()
+	if Input.is_action_just_pressed("ataque_especial"): # Por defecto es Espacio
+		disparar_espiral(10) # Disparamos 12 burbujas para un círculo denso
 
 # --- FUNCIONES DE LA BARRA ---
 
@@ -50,10 +52,11 @@ func actualizar_barras():
 	# 2. SINCRONIZACIÓN: Pasamos los valores de las variables a las barras visuales
 	if barra_vida:
 		barra_vida.value = salud
+		print("DEBUG: La salud es ", salud, " y la barra marca ", barra_vida.value)
 	if barra_burbujas:
 		barra_burbujas.value = burbujas_actuales
 
-func recibir_danio(cantidad):
+func recibir_danio(cantidad:float):
 	if muriendo: return
 	salud -= cantidad
 	# 3. ACTUALIZAR VIDA: La barra baja inmediatamente al recibir daño
@@ -96,6 +99,55 @@ func disparar_con_efecto():
 		get_tree().current_scene.add_child(nueva_burbuja)
 	else:
 		print("¡No tienes burbujas!")
+func disparar_circular(cantidad_burbujas: int = 8):
+	# Verificamos si tenemos suficientes burbujas para este gran ataque
+	if burbujas_actuales >= 2: # Coste de 2 burbujas por ser un ataque fuerte
+		burbujas_actuales -= 2
+		actualizar_barras()
+		
+		# El círculo completo tiene 360 grados (o TAU en radianes)
+		# Dividimos 360 entre la cantidad de burbujas que queremos
+		var paso_angulo = TAU / cantidad_burbujas 
+		
+		for i in range(cantidad_burbujas):
+			var nueva_burbuja = burbuja_scene.instantiate()
+			
+			# Calculamos la dirección para cada burbuja en el círculo
+			var angulo = i * paso_angulo
+			var direccion = Vector2.RIGHT.rotated(angulo)
+			
+			# Configuración de la burbuja
+			nueva_burbuja.global_position = global_position
+			nueva_burbuja.direccion = direccion
+			nueva_burbuja.rotation = angulo + PI/2 # Para que miren hacia afuera
+			
+			get_tree().current_scene.add_child(nueva_burbuja)
+			
+		print("¡Ataque Circular!")
+	else:
+		print("No hay energía suficiente para el ataque circular")
+		
+func disparar_espiral(cantidad: int = 12):
+	if burbujas_actuales >= 3:
+		burbujas_actuales -= 3
+		actualizar_barras()
+		
+		var paso_angulo = TAU / cantidad
+		
+		for i in range(cantidad):
+			var nueva_burbuja = burbuja_scene.instantiate()
+			var angulo_inicial = i * paso_angulo
+			
+			# Posición inicial
+			nueva_burbuja.global_position = global_position
+			nueva_burbuja.configurar_espiral(angulo_inicial, 250.0, 6.0)
+			
+			# PASO CLAVE: Le decimos a la burbuja que debe "orbitar"
+			# Si tu script de burbuja no tiene estas variables, las crearemos abajo
+			if nueva_burbuja.has_method("configurar_espiral"):
+				nueva_burbuja.configurar_espiral(angulo_inicial, 200.0, 4.0)
+			
+			get_tree().current_scene.add_child(nueva_burbuja)
 
 # Función extra para cuando recojas un objeto de burbuja en el mapa
 func recolectar_burbuja():

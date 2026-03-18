@@ -89,19 +89,22 @@ func lanzar_ataque(golpeo_escudo: bool = false):
 		
 	esta_atacando = true
 	
-	# Impulso rápido hacia el objetivo
+	# Impulso más fuerte para asegurar el choque
 	var impulso = (jugador.global_position - global_position).normalized()
-	velocity = impulso * (velocidad * 2) 
+	velocity = impulso * (velocidad * 3) # Subí el multiplicador a 3
 	move_and_slide()
 	
 	sprite.play("atacar")
 	
-	await get_tree().create_timer(0.15).timeout 
+	# Esperamos un poquito a que el pez "toque" al jugador
+	await get_tree().create_timer(0.1).timeout 
 	
-	# Solo hacemos daño si NO golpeó el escudo
 	if not golpeo_escudo:
-		if is_instance_valid(jugador) and global_position.distance_to(jugador.global_position) < 40.0:
-			jugador.recibir_danio(1)
+		if is_instance_valid(jugador):
+			# Aumentamos el rango de 40 a 65 para que sea más efectivo
+			if global_position.distance_to(jugador.global_position) < 65.0:
+				jugador.recibir_danio(0.50) # <--- AQUÍ CAMBIAS EL DAÑO (0.25 = un cuarto)
+				print("¡Impacto! Vida restante: ", jugador.salud)
 	
 	morir_por_explosion()
 
