@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://d4ir00yap8qw7"]
+[gd_scene load_steps=4 format=3 uid="uid://d4ir00yap8qw7"]
 
 [ext_resource type="Script" uid="uid://dponwhi2vbp55" path="res://scripts/item_burbuja.gd" id="1_83jge"]
 [ext_resource type="Texture2D" uid="uid://dl137s1ikcebl" path="res://asets/ajolote/burbuja.png" id="2_28r7h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmlr8"]
-radius = 4.472136
+radius = 7.0
 
-[node name="ItemBurbuja" type="Area2D" unique_id=4821451]
+[node name="ItemBurbuja" type="Area2D"]
 script = ExtResource("1_83jge")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1235152051]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.7176471)
 scale = Vector2(1.0022336, 1)
 texture = ExtResource("2_28r7h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=957931393]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 2
 shape = SubResource("CircleShape2D_jmlr8")
 

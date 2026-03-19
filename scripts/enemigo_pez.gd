@@ -145,6 +145,22 @@ func soltar_recompensa():
 	var drop = burbuja_recolectable.instantiate()
 	drop.global_position = global_position
 	get_tree().current_scene.add_child(drop)
+	
+func auto_destruccion():
+	# 1. Desactivamos las colisiones para que no te hagan daño mientras "explotan"
+	$CollisionShape2D.set_deferred("disabled", true)
+	
+	# 2. Reproducimos la animación "atacar" (que es explotar)
+	if sprite and sprite.sprite_frames.has_animation("atacar"):
+		sprite.play("atacar")
+		
+		# 3. Esperamos a que la animación termine automáticamente
+		await sprite.animation_finished
+	else:
+		print("Error: El pez no tiene animación de 'atacar' para explotar")
+		
+	# 4. Una vez terminada la animación, lo borramos
+	queue_free()
 
 # --- SEÑALES ---
 

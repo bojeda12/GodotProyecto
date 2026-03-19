@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dlilqqewwh3c2"]
+[gd_scene load_steps=14 format=3 uid="uid://dlilqqewwh3c2"]
 
 [ext_resource type="Script" uid="uid://ee41ocdre8pe" path="res://scripts/coin.gd" id="1_11l1o"]
 [ext_resource type="Texture2D" uid="uid://beqpphvwrnbnv" path="res://asets/01coin.png" id="1_rwqht"]
@@ -71,12 +71,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0mny"]
 radius = 3.0
 
-[node name="coin" type="Area2D" unique_id=204342792]
+[node name="coin" type="Area2D"]
 position = Vector2(4, 0)
 collision_layer = 4
 script = ExtResource("1_11l1o")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2099819853]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, -3.250002)
 scale = Vector2(0.058333334, 0.045833305)
 sprite_frames = SubResource("SpriteFrames_jsmju")
@@ -84,7 +84,7 @@ autoplay = "default"
 frame = 7
 frame_progress = 0.69101477
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=739670222]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_s0mny")
 script = ExtResource("2_i64fm")

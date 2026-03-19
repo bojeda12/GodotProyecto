@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbuhtv4xmknji"]
+
+[ext_resource type="Script" uid="uid://bt2phuhy1dtp5" path="res://scripts/puerta_final.gd" id="1_0xb1v"]
+[ext_resource type="Texture2D" uid="uid://ddnl416jfk4by" path="res://asets/ajolote/puerta.png" id="1_38ddb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38ddb"]
+atlas = ExtResource("1_38ddb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xb1v"]
+atlas = ExtResource("1_38ddb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bt5vn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38ddb")
+}],
+"loop": true,
+"name": &"abierta",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xb1v")
+}],
+"loop": true,
+"name": &"cerrada",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qch6f"]
+size = Vector2(32, 32)
+
+[node name="PuertaFinal" type="Area2D" groups=["puerta"]]
+scale = Vector2(0.45185098, 0.48915163)
+collision_mask = 3
+script = ExtResource("1_0xb1v")
+escena_jefe = "uid://bqcbaw5tngxb6"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bt5vn")
+animation = &"abierta"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qch6f")
+
+[node name="Transicion" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Transicion"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

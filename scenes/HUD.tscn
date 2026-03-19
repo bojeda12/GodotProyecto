@@ -1,12 +1,13 @@
-[gd_scene format=3 uid="uid://bqpxv54ubso61"]
+[gd_scene load_steps=5 format=3 uid="uid://bqpxv54ubso61"]
 
 [ext_resource type="Texture2D" uid="uid://ruop6d3yktff" path="res://asets/splash/barravidaVacia.png" id="1_fls4u"]
 [ext_resource type="Texture2D" uid="uid://baemcrd0s75fk" path="res://asets/splash/barravidaLlena.png" id="2_1etfg"]
 [ext_resource type="Texture2D" uid="uid://l3rtt6oby7tg" path="res://asets/splash/barraBurbuja.png" id="3_1etfg"]
+[ext_resource type="Texture2D" uid="uid://dypqawuiw3ki7" path="res://asets/splash/llaveunica.png" id="4_7hsmw"]
 
-[node name="HUD" type="CanvasLayer" unique_id=2073984528]
+[node name="HUD" type="CanvasLayer"]
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=801189118]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 50.0
 offset_right = 150.0
 offset_bottom = 42.0
@@ -14,11 +15,11 @@ scale = Vector2(2.6271434, 1.0987186)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=930263223]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="BarraBurbujas" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1932523723]
+[node name="BarraBurbujas" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(30, 40)
 layout_mode = 2
 size_flags_vertical = 3
@@ -26,7 +27,7 @@ max_value = 6.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_1etfg")
 
-[node name="BarraVida" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1273177363]
+[node name="BarraVida" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(30, 40)
 layout_direction = 1
 layout_mode = 2
@@ -37,3 +38,26 @@ step = 0.01
 nine_patch_stretch = true
 texture_under = ExtResource("1_fls4u")
 texture_progress = ExtResource("2_1etfg")
+
+[node name="ContenedorLlaves" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -106.0
+offset_right = 86.0
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContenedorLlaves"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ContenedorLlaves/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_7hsmw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ContenedorLlaves/HBoxContainer" groups=["etiqueta_mision"]]
+layout_mode = 2
+text = "0/3"

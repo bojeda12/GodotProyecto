@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://mg6c24u6ce72"]
+
+[ext_resource type="Texture2D" uid="uid://d0yyx51bsiujs" path="res://asets/enemigos/espina.png" id="1_rhh26"]
+[ext_resource type="Script" uid="uid://b6k6464h2moey" path="res://scripts/espina.gd" id="1_ry2q3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ry2q3"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_ry2q3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 1)
+rotation = 1.5716894
+scale = Vector2(0.90625, 0.9375)
+texture = ExtResource("1_rhh26")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ry2q3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

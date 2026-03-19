@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://duh8vle1w4d00"]
+[gd_scene load_steps=27 format=3 uid="uid://duh8vle1w4d00"]
 
 [ext_resource type="Texture2D" uid="uid://bnuup0eof5i4r" path="res://asets/ajolote/movimientoReposo1.png" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://drufhvvhhuony" path="res://scripts/jugadorAjolote.gd" id="1_tuyoq"]
@@ -146,46 +146,45 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
 radius = 4.0297627
 
-[node name="Player" type="CharacterBody2D" unique_id=1618681524]
+[node name="Player" type="CharacterBody2D" groups=["jugador"]]
 z_index = 5
 collision_mask = 7
 script = ExtResource("1_tuyoq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=808682731]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["jugador"]]
 position = Vector2(-2, -9)
 scale = Vector2(0.390625, 0.375)
 sprite_frames = SubResource("SpriteFrames_gee14")
 animation = &"arrriba"
 autoplay = "reposo"
-frame_progress = 0.055663444
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1515084228]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.0000001, -9.000001)
 rotation = 3.0770586
 shape = SubResource("CapsuleShape2D_tuyoq")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1597785816]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-2, -19)
 scale = Vector2(0.24337403, 0.23685989)
 sprite_frames = SubResource("SpriteFrames_60mlk")
 animation = &"EfectoDisparo"
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=238547198]
+[node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-2, -19)
 scale = Vector2(-678.247, 8.682159)
 
-[node name="CampoFuerza" type="Area2D" parent="." unique_id=923434514]
+[node name="CampoFuerza" type="Area2D" parent="."]
 visible = false
 position = Vector2(-28, -16)
 scale = Vector2(5.45938, 5.0300756)
 collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="CampoFuerza" unique_id=267906018]
+[node name="Sprite2D" type="Sprite2D" parent="CampoFuerza"]
 modulate = Color(1, 1, 1, 0.5647059)
 position = Vector2(4.579274, 1.3916293)
 texture = ExtResource("9_ur7pv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CampoFuerza" unique_id=161121945]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CampoFuerza"]
 position = Vector2(4.5792747, 1.3916292)
 shape = SubResource("CircleShape2D_y4r1p")
