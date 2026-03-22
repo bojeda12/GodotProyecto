@@ -14,7 +14,7 @@ func activar_puerta():
 	$AnimatedSprite2D.play("abierta")
 
 func _on_body_entered(body):
-	print("--- INTENTO DE ENTRADA ---")
+	print("--- INTENTO DE ENTRADA por la puerta ---")
 	print("Objeto que entró: ", body.name)
 	print("¿Está en grupo jugador?: ", body.is_in_group("jugador"))
 	print("¿La puerta está abierta?: ", esta_abierta)
