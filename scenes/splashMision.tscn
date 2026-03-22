@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://c8hlarv0eorhg"]
+
+[ext_resource type="Script" uid="uid://7si4o0ewxjo" path="res://scripts/splash_mision.gd" id="1_0swde"]
+[ext_resource type="Texture2D" uid="uid://brt7hsf15vas6" path="res://asets/splash/inicioSplash.png" id="1_bvram"]
+[ext_resource type="Texture2D" uid="uid://crxg3d732kidd" path="res://asets/splash/BotonInicioSplash.png" id="2_07njx"]
+[ext_resource type="Texture2D" uid="uid://dag85hld5n38i" path="res://asets/splash/teclaFlechas.png" id="3_41ff6"]
+[ext_resource type="Texture2D" uid="uid://xi0uegiyeji6" path="res://asets/splash/teclaESpacio.png" id="4_wbxpn"]
+[ext_resource type="Texture2D" uid="uid://c1ewkclhtjjjm" path="res://asets/splash/teclaX.png" id="5_th5is"]
+[ext_resource type="Texture2D" uid="uid://c33ghbkgjs86p" path="res://asets/splash/checkLleno.png" id="6_th5is"]
+[ext_resource type="Texture2D" uid="uid://cxo8hqtlru8rf" path="res://asets/splash/checkVacio.png" id="7_5bvyv"]
+[ext_resource type="Texture2D" uid="uid://bvxli4n04r8l4" path="res://asets/splash/BotonInicioSplashHover.png" id="8_5bvyv"]
+[ext_resource type="Texture2D" uid="uid://x1kv85kyoi2v" path="res://asets/splash/BotonInicioSplassPressed.png" id="9_2ao80"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bvyv"]
+content_margin_top = 35.0
+content_margin_bottom = 40.0
+texture = ExtResource("2_07njx")
+
+[node name="Control" type="CanvasLayer" unique_id=1407580220]
+process_mode = 3
+script = ExtResource("1_0swde")
+
+[node name="FondoOscuro" type="ColorRect" parent="." unique_id=2069374072]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=930474535]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bvram")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=1602569651]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -173.0
+offset_right = 318.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 23
+
+[node name="PanelContainer" type="PanelContainer" parent="TextureRect/VBoxContainer" unique_id=1614821608]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5bvyv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/VBoxContainer/PanelContainer" unique_id=974980747]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Titulo" type="Label" parent="TextureRect/VBoxContainer/PanelContainer/VBoxContainer" unique_id=159897709]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 36
+text = "Objetivo:"
+
+[node name="Descripcion" type="Label" parent="TextureRect/VBoxContainer/PanelContainer/VBoxContainer" unique_id=23283951]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Encuentra las 3 llaves doradas para
+abir el portal y escapar del arrecife"
+
+[node name="Controles" type="Label" parent="TextureRect/VBoxContainer" unique_id=2076833360]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Controles:"
+
+[node name="GridControles" type="GridContainer" parent="TextureRect/VBoxContainer" unique_id=871870456]
+layout_mode = 2
+
+[node name="Movimiento" type="HBoxContainer" parent="TextureRect/VBoxContainer/GridControles" unique_id=45275329]
+layout_mode = 2
+theme_override_constants/separation = 34
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/VBoxContainer/GridControles/Movimiento" unique_id=1520782534]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+texture = ExtResource("3_41ff6")
+expand_mode = 1
+
+[node name="Moverse" type="Label" parent="TextureRect/VBoxContainer/GridControles/Movimiento" unique_id=1360185510]
+layout_mode = 2
+text = "Nadar"
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect/VBoxContainer/GridControles/Movimiento" unique_id=873770035]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+texture = ExtResource("4_wbxpn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/GridControles/Movimiento" unique_id=1314115568]
+layout_mode = 2
+text = "Disparo"
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect/VBoxContainer/GridControles/Movimiento" unique_id=329567030]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("5_th5is")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="TextureRect/VBoxContainer/GridControles/Movimiento" unique_id=1758758673]
+layout_mode = 2
+text = "Disparo especial"
+
+[node name="CheckNoMostrar" type="CheckBox" parent="TextureRect/VBoxContainer" unique_id=1077572007]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+theme_override_icons/checked = ExtResource("6_th5is")
+theme_override_icons/unchecked = ExtResource("7_5bvyv")
+text = "No volver a mostrar"
+
+[node name="BtnEntendido" type="TextureButton" parent="TextureRect/VBoxContainer" unique_id=1604067179]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_07njx")
+texture_pressed = ExtResource("9_2ao80")
+texture_hover = ExtResource("8_5bvyv")
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/BtnEntendido" unique_id=671810479]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -18.0
+offset_right = 64.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "Entendido"
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/BtnEntendido" to="." method="_on_btn_entendido_pressed"]

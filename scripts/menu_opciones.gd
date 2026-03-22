@@ -3,7 +3,8 @@ extends Control
 var menu_principal = "res://scenes/menu_inicio.tscn" 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/HSlider.value = Config.volumen_musica
+	#$CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/HSlider.value = Config.volumen_musica
+	$TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer/HSlider.value = Config.volumen_musica
 	# Al abrir el menú, el botón debe reflejar lo que dice el Autoload
 	var ruta_check = "CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/CheckBox"
 	if has_node(ruta_check):

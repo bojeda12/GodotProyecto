@@ -1,42 +1,31 @@
 extends CanvasLayer
 
 # Usamos las rutas exactas de tu árbol de escenas (Mayúsculas importan)
-@onready var btn_continuar = $Control/Continuar
-@onready var btn_salir = $Control/Salir
+@onready var color_rect = $ColorRect
+@onready var menu_fondo = $TextureRect
+@onready var btn_reintentar = $TextureRect/VBoxContainer/HBoxContainer/BtnContinuar
+@onready var btn_salir = $TextureRect/VBoxContainer/HBoxContainer/BtnSalir
 
 func _ready():
-	# Detenemos el tiempo para el Splash
-	Engine.time_scale = 0.1 
+	# Configuración inicial
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = true
 	
-	# --- SEÑALES DE CONTINUAR ---
-	btn_continuar.mouse_entered.connect(_on_continuar_hover)
-	btn_continuar.mouse_exited.connect(_on_continuar_normal)
-	btn_continuar.gui_input.connect(_on_continuar_click)
+	# Animación de entrada
+	var tween = create_tween()
 	
-	# --- SEÑALES DE SALIR ---
-	btn_salir.mouse_entered.connect(_on_salir_hover)
-	btn_salir.mouse_exited.connect(_on_salir_normal)
-	btn_salir.gui_input.connect(_on_salir_click)
+	# CORRECCIÓN AQUÍ: Quitamos el "../" porque ColorRect es hijo directo
+	tween.tween_property(color_rect, "modulate:a", 0.6, 0.5) 
+	
+	# Animamos el menú
+	tween.tween_property(menu_fondo, "modulate:a", 1.0, 0.5)
 
-# --- FUNCIONES CONTINUAR ---
-func _on_continuar_hover():
-	btn_continuar.modulate = Color(0, 1, 0) # Solo verde para continuar
 
-func _on_continuar_normal():
-	btn_continuar.modulate = Color(1, 1, 1) # Vuelve a blanco
+func _on_btn_continuar_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/menu_inicio.tscn")
 
-func _on_continuar_click(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		Engine.time_scale = 1.0
-		get_tree().change_scene_to_file("res://scenes/menu_inicio.tscn")
 
-# --- FUNCIONES SALIR ---
-func _on_salir_hover():
-	btn_salir.modulate = Color(1, 0, 0) # Solo rojo para salir
-
-func _on_salir_normal():
-	btn_salir.modulate = Color(1, 1, 1) # Vuelve a blanco
-
-func _on_salir_click(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		get_tree().quit()
+func _on_btn_salir_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/menu_inicio.tscn")

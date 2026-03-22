@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q0uh8hos3k3g"
-path="res://.godot/imported/ChatGPT Image Mar 15, 2026, 09_11_08 PM.png-4f906f3544617e1a6ecbce7e6f1fb46a.ctex"
+uid="uid://drsn06jnp5uh1"
+path="res://.godot/imported/water100007.png-2e836fc264502787186bed73ca92c4a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asets/ChatGPT Image Mar 15, 2026, 09_11_08 PM.png"
-dest_files=["res://.godot/imported/ChatGPT Image Mar 15, 2026, 09_11_08 PM.png-4f906f3544617e1a6ecbce7e6f1fb46a.ctex"]
+source_file="res://asets/explosiones/disparoAgua/water100007.png"
+dest_files=["res://.godot/imported/water100007.png-2e836fc264502787186bed73ca92c4a5.ctex"]
 
 [params]
 

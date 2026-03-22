@@ -3,11 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://cgakbfho2g3xq" path="res://asets/splash/BackgroundCapasAzul.png" id="1_1kqq5"]
 [ext_resource type="Texture2D" uid="uid://dhalwx8j3e5cr" path="res://asets/splash/botonRegular.png" id="2_1ipri"]
 [ext_resource type="Texture2D" uid="uid://d05otn630btwm" path="res://asets/splash/burbujaSlide.png" id="2_g2dhw"]
-[ext_resource type="Texture2D" uid="uid://uf34mg5a472i" path="res://asets/splash/backgroundMenu.png" id="2_qhuem"]
 [ext_resource type="Texture2D" uid="uid://fw72thnw4hgr" path="res://asets/splash/pressedBoton.png" id="3_1q6dh"]
 [ext_resource type="Texture2D" uid="uid://bn6nwogaxkn64" path="res://asets/splash/burbujaSlidePressed.png" id="3_qhuem"]
+[ext_resource type="Texture2D" uid="uid://brt7hsf15vas6" path="res://asets/splash/inicioSplash.png" id="3_xqa1m"]
 [ext_resource type="Texture2D" uid="uid://bpv7h70k3g207" path="res://asets/splash/hoverBoton.png" id="4_g2dhw"]
+[ext_resource type="Texture2D" uid="uid://crxg3d732kidd" path="res://asets/splash/BotonInicioSplash.png" id="4_lu3ur"]
+[ext_resource type="Texture2D" uid="uid://c33ghbkgjs86p" path="res://asets/splash/checkLleno.png" id="7_jbabh"]
+[ext_resource type="Texture2D" uid="uid://cxo8hqtlru8rf" path="res://asets/splash/checkVacio.png" id="8_kpfgy"]
 [ext_resource type="Script" uid="uid://co5hy3igcxvoo" path="res://scripts/menu_opciones.gd" id="8_r8xbj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kpfgy"]
+content_margin_left = 80.0
+content_margin_top = 60.0
+content_margin_right = 80.0
+content_margin_bottom = 60.0
+texture = ExtResource("4_lu3ur")
 
 [node name="MenuOpciones" type="Control" unique_id=833644415]
 layout_mode = 3
@@ -27,79 +37,80 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_1kqq5")
 
-[node name="Label" type="Label" parent="." unique_id=1895297051]
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=449853185]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xqa1m")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect" unique_id=184318184]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -396.0
-offset_top = 10.0
-offset_right = -110.0
-offset_bottom = 169.0
-grow_horizontal = 2
-scale = Vector2(2.8795438, 1.5629768)
-theme_override_font_sizes/font_size = 57
-text = "OPCIONES
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1473290063]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -173.0
+offset_right = 318.0
+offset_bottom = 184.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 23
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer" unique_id=2060461705]
-custom_minimum_size = Vector2(300, 300)
+[node name="PanelContainer" type="PanelContainer" parent="TextureRect/TextureRect/VBoxContainer" unique_id=292856588]
 layout_mode = 2
-texture = ExtResource("2_qhuem")
-region_rect = Rect2(14, 5.5, 105.3902, 114.67012)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_kpfgy")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/NinePatchRect" unique_id=1661122798]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/NinePatchRect/MarginContainer" unique_id=311681267]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/VBoxContainer/PanelContainer" unique_id=609243383]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 4
+theme_override_constants/separation = 37
 
-[node name="Label" type="Label" parent="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1545570055]
+[node name="Label" type="Label" parent="TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1545570055]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 29
 text = "MUSICA"
 
-[node name="HSlider" type="HSlider" parent="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=280138193]
+[node name="HSlider" type="HSlider" parent="TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer" unique_id=280138193]
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("2_g2dhw")
 theme_override_icons/grabber_highlight = ExtResource("3_qhuem")
 max_value = 1.0
 step = 0.05
 
-[node name="CheckBox" type="CheckBox" parent="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1173918643]
+[node name="CheckBox" type="CheckBox" parent="TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1173918643]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 20
+theme_override_icons/checked = ExtResource("7_jbabh")
+theme_override_icons/unchecked = ExtResource("8_kpfgy")
 text = "PANTALLA COMPLETA"
 
-[node name="atras" type="TextureButton" parent="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1471166435]
-custom_minimum_size = Vector2(120, 30)
+[node name="Titulo" type="Label" parent="TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1562970874]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 36
+text = "Objetivo:"
+
+[node name="Descripcion" type="Label" parent="TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1026180331]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Encuentra las 3 llaves doradas para
+abir el portal y escapar del arrecife"
+
+[node name="atras" type="TextureButton" parent="TextureRect/TextureRect/VBoxContainer" unique_id=1471166435]
+custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -108,18 +119,33 @@ texture_pressed = ExtResource("3_1q6dh")
 texture_hover = ExtResource("4_g2dhw")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/atras" unique_id=1837187956]
+[node name="Label" type="Label" parent="TextureRect/TextureRect/VBoxContainer/atras" unique_id=1837187956]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 20
 text = "Atras"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="value_changed" from="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
-[connection signal="toggled" from="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
-[connection signal="pressed" from="CenterContainer/NinePatchRect/MarginContainer/VBoxContainer/atras" to="." method="_on_atras_pressed"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/TextureRect/VBoxContainer" unique_id=765618489]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Nota" type="Label" parent="TextureRect/TextureRect/VBoxContainer/HBoxContainer" unique_id=1375930945]
+layout_mode = 2
+text = "Nota:"
+
+[node name="Descripcion" type="Label" parent="TextureRect/TextureRect/VBoxContainer/HBoxContainer" unique_id=61478262]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Presiona I para obtener informacion 
+del nivel y P para pausar el juego"
+
+[connection signal="value_changed" from="TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="pressed" from="TextureRect/TextureRect/VBoxContainer/atras" to="." method="_on_atras_pressed"]

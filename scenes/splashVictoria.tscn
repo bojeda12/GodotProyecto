@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://blutgc1kk7cc0"]
+[gd_scene format=3 uid="uid://blutgc1kk7cc0"]
 
-[ext_resource type="Texture2D" uid="uid://48mknm58pnqn" path="res://asets/splash/splashVictoria.png" id="1_v1vkc"]
 [ext_resource type="Script" uid="uid://c1l6l7xjx7h3s" path="res://scripts/splash_victoria.gd" id="1_vshq8"]
+[ext_resource type="Texture2D" uid="uid://brt7hsf15vas6" path="res://asets/splash/inicioSplash.png" id="3_634im"]
+[ext_resource type="Texture2D" uid="uid://chybibstx8alu" path="res://asets/splash/felicidadesLetras.png" id="4_c1yx6"]
+[ext_resource type="Texture2D" uid="uid://gqb4i35me7qn" path="res://asets/splash/ajoloteGanador.png" id="5_d8m8e"]
+[ext_resource type="Texture2D" uid="uid://crxg3d732kidd" path="res://asets/splash/BotonInicioSplash.png" id="6_cuqb3"]
+[ext_resource type="Texture2D" uid="uid://x1kv85kyoi2v" path="res://asets/splash/BotonInicioSplassPressed.png" id="7_e48bq"]
+[ext_resource type="Texture2D" uid="uid://bvxli4n04r8l4" path="res://asets/splash/BotonInicioSplashHover.png" id="8_spxfh"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=860843952]
+process_mode = 3
 script = ExtResource("1_vshq8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=8342835]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,46 +21,93 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 233.0
-offset_top = 132.0
-offset_right = 1641.0
-offset_bottom = 900.0
-scale = Vector2(0.482, 0.482)
-texture = ExtResource("1_v1vkc")
+[node name="TextureRect" type="TextureRect" parent="." unique_id=221494339]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_634im")
 expand_mode = 1
-stretch_mode = 5
 
-[node name="Salir" type="Label" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=1778302601]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 658.0
-offset_top = 437.0
-offset_right = 719.0
-offset_bottom = 470.0
-mouse_filter = 0
-theme_override_font_sizes/font_size = 20
-text = "Salir"
+offset_left = -329.0
+offset_top = -173.0
+offset_right = 318.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
 
-[node name="Continuar" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 444.0
-offset_top = 438.0
-offset_right = 628.0
-offset_bottom = 491.0
-mouse_filter = 0
-theme_override_font_sizes/font_size = 20
+[node name="TextureRect" type="TextureRect" parent="TextureRect/VBoxContainer" unique_id=926758436]
+layout_mode = 2
+texture = ExtResource("4_c1yx6")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect/VBoxContainer" unique_id=1169366458]
+custom_minimum_size = Vector2(301, 217)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_d8m8e")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer" unique_id=1182101410]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BtnContinuar" type="TextureButton" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=741970555]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_cuqb3")
+texture_pressed = ExtResource("7_e48bq")
+texture_hover = ExtResource("8_spxfh")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/HBoxContainer/BtnContinuar" unique_id=1942110401]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -18.0
+offset_right = 64.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
 text = "Continuar"
 
-[connection signal="mouse_entered" from="Control/Salir" to="." method="_on_salir_mouse_entered"]
-[connection signal="mouse_entered" from="Control/Continuar" to="." method="_on_salir_mouse_entered"]
-[connection signal="mouse_exited" from="Control/Continuar" to="." method="_on_salir_mouse_exited"]
+[node name="BtnSalir" type="TextureButton" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=1304386360]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_cuqb3")
+texture_hover = ExtResource("8_spxfh")
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/HBoxContainer/BtnSalir" unique_id=742108068]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -18.0
+offset_right = 27.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "Salir"
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/HBoxContainer/BtnContinuar" to="." method="_on_btn_continuar_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/HBoxContainer/BtnSalir" to="." method="_on_btn_salir_pressed"]

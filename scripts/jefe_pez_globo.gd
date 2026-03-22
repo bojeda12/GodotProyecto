@@ -25,32 +25,84 @@ var timer_ataque = 0.0
 func _ready():
 	posicion_inicial = global_position
 	sprite.play("idle")
-	# Asegúrate de que el pez empiece con salud completa
 	salud_actual = salud_max
-	# Configuramos la barra con la salud inicial
-	barra_vida.max_value = salud_max
-	barra_vida.value = salud_actual
+	
+	# --- AJUSTE PARA EL PORCENTAJE ---
+	barra_vida.max_value = 100  # La barra ahora escala de 0 a 100%
+	barra_vida.value = 100      # Empieza llena
+	
+	print("Barra del jefe lista al 100%")
+	
 
 func _physics_process(delta):
 	if salud_actual > 0:
 		# Temporizador de disparo
 		timer_ataque += delta
+		
+		# --- NUEVO: AVISO VISUAL (Se activa 0.5 segundos antes de disparar) ---
+		# Si falta poco para los 3.0 segundos, avisamos al jugador
+		if timer_ataque >= 2.5 and timer_ataque < 2.6: 
+			preparar_aviso_visual()
+
+		# Disparo original
 		if timer_ataque >= 3.0:
 			lanzar_espinas()
 			timer_ataque = 0.0
 		
 		ejecutar_comportamiento(delta)
 		actualizar_mirada()
+
+# --- NUEVA FUNCIÓN PARA EL EFECTO DE TEMBLOR Y BRILLO ---
+func preparar_aviso_visual():
+	var tween = create_tween().set_parallel(true)
+	var sprite = $AnimatedSprite2D # Asegúrate de que este sea el nombre de tu nodo de imagen
+	
+	# 1. Brillo intenso (Flash blanco)
+	tween.tween_property(sprite, "modulate", Color(4, 4, 4), 0.2)
+	
+	# 2. Temblor (Sacudida rápida)
+	for i in range(5):
+		tween.chain().tween_property(sprite, "offset", Vector2(randf_range(-8, 8), randf_range(-8, 8)), 0.05)
+	
+	# 3. Volver a la normalidad justo antes de que salgan las espinas
+	tween.chain().tween_property(sprite, "modulate", Color(1, 1, 1), 0.1)
+	tween.tween_property(sprite, "offset", Vector2.ZERO, 0.1)
+	
+	
 func lanzar_espinas():
-	# Disparamos 8 espinas en círculo (45 grados cada una)
-	for i in range(8):
+	# Valores por defecto (Fase 1)
+	var cantidad_espinas = 8
+	var tamaño_espina = Vector2(1, 1)
+	
+	# Ajustamos según la fase actual
+	if fase == 2:
+		cantidad_espinas = 12 # Más espinas
+		tamaño_espina = Vector2(1.5, 1.5) # Un poco más grandes
+	elif fase == 3:
+		cantidad_espinas = 16 # ¡Lluvia de espinas!
+		tamaño_espina = Vector2(2.2, 2.2) # Espinas gigantes
+	
+	# Bucle de disparo actualizado
+	for i in range(cantidad_espinas):
 		var nueva_espina = espina_escena.instantiate()
 		get_parent().add_child(nueva_espina)
 		nueva_espina.global_position = global_position
 		
-		var angulo = i * PI / 4 # 45 grados en radianes
+		# Calculamos el ángulo dinámicamente según la cantidad
+		var angulo = i * (2 * PI / cantidad_espinas) 
 		nueva_espina.direccion = Vector2(cos(angulo), sin(angulo))
 		nueva_espina.rotation = angulo
+		
+		# Aplicamos el tamaño a la espina
+		nueva_espina.scale = tamaño_espina
+		
+	
+		if fase == 3:
+			# El color (2, 0.5, 0.5) hace que brille (Bloom) si tienes WorldEnvironment
+			nueva_espina.modulate = Color(2, 0.5, 0.5) 
+			# Opcional: Que las espinas de fase 3 sean un poco más rápidas
+			if "velocidad" in nueva_espina:
+				nueva_espina.velocidad = 350
 
 func ejecutar_comportamiento(delta):
 	# 1. Ajustar velocidad según la fase (Limpiamos los if y aseguramos valor)
@@ -93,19 +145,29 @@ func actualizar_mirada():
 		sprite.flip_h = true   # <--- Cámbialo a 'true' si antes era 'false'
 		
 func recibir_danio(cantidad):
-	# Aplicamos el super daño de testeo
-	var daño_final = cantidad * 50
+	# 1. Aplicamos el daño (manteniendo tu multiplicador de testeo)
+	var daño_final = cantidad * 5
 	salud_actual -= daño_final
 	
-	# Actualizamos la barra visual inmediatamente
-	barra_vida.value = salud_actual 
+	# --- SOLUCIÓN VERGA: CÁLCULO PORCENTUAL ---
+	# Esto convierte la salud (0 a 300) en un valor de 0 a 100 para la barra.
+	# Así, aunque la salud sea 55, la barra marcará 18.3% y SE SEGUIRÁ VIENDO.
+	var porcentaje_vida = (float(salud_actual) / salud_max) * 100
 	
-	# Efecto visual de parpadeo
+	# Actualizamos la barra usando el porcentaje calculado
+	# Usamos un Tween para que el movimiento sea fluido y no de saltos
+	var tween_barra = create_tween()
+	tween_barra.tween_property(barra_vida, "value", porcentaje_vida, 0.2).set_trans(Tween.TRANS_SINE)
+	
+	# Debug para confirmar que los números cuadran
+	print("Jefe -> Salud Real: ", salud_actual, " | Visual en Barra: ", porcentaje_vida, "%")
+	
+	# 2. Efecto visual de parpadeo (Tu lógica original)
 	sprite.modulate = Color(10, 10, 10) 
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1, 1, 1) 
 	
-	# IMPORTANTE: Llamamos a actualizar_fase para que revise si debe morir
+	# 3. Revisar cambios de fase o muerte
 	actualizar_fase()
 
 func actualizar_fase():

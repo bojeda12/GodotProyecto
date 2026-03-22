@@ -2,7 +2,7 @@ extends Node2D
 
 @export var pez_escena: PackedScene 
 @export var radio_generacion = 50.0 # Un poco más de espacio para que no se amontonen
-@export var limite_global = 30 # limite de peces
+@export var limite_global = 25 # limite de peces
 
 
 #variable que permite activar o desactivar los spawner

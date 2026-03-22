@@ -1,25 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqpxv54ubso61"]
+[gd_scene format=3 uid="uid://bqpxv54ubso61"]
 
 [ext_resource type="Texture2D" uid="uid://ruop6d3yktff" path="res://asets/splash/barravidaVacia.png" id="1_fls4u"]
 [ext_resource type="Texture2D" uid="uid://baemcrd0s75fk" path="res://asets/splash/barravidaLlena.png" id="2_1etfg"]
 [ext_resource type="Texture2D" uid="uid://l3rtt6oby7tg" path="res://asets/splash/barraBurbuja.png" id="3_1etfg"]
 [ext_resource type="Texture2D" uid="uid://dypqawuiw3ki7" path="res://asets/splash/llaveunica.png" id="4_7hsmw"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=714880501]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_left = 50.0
-offset_right = 150.0
-offset_bottom = 42.0
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=909927680]
+offset_left = 30.0
+offset_right = 130.0
+offset_bottom = 84.0
 scale = Vector2(2.6271434, 1.0987186)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=568238214]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="BarraBurbujas" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
+[node name="BarraBurbujas" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1891757676]
 custom_minimum_size = Vector2(30, 40)
 layout_mode = 2
 size_flags_vertical = 3
@@ -27,19 +27,20 @@ max_value = 6.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_1etfg")
 
-[node name="BarraVida" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(30, 40)
+[node name="BarraVida" type="TextureProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1253813774]
+custom_minimum_size = Vector2(100, 40)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 3
 min_value = -0.5
 max_value = 3.0
 step = 0.01
+value = 0.5
 nine_patch_stretch = true
 texture_under = ExtResource("1_fls4u")
 texture_progress = ExtResource("2_1etfg")
 
-[node name="ContenedorLlaves" type="MarginContainer" parent="."]
+[node name="ContenedorLlaves" type="MarginContainer" parent="." unique_id=1401589776]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -48,16 +49,16 @@ offset_right = 86.0
 grow_vertical = 0
 theme_override_constants/margin_left = 24
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ContenedorLlaves"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ContenedorLlaves" unique_id=2112865878]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="ContenedorLlaves/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ContenedorLlaves/HBoxContainer" unique_id=1703624307]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("4_7hsmw")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="ContenedorLlaves/HBoxContainer" groups=["etiqueta_mision"]]
+[node name="Label" type="Label" parent="ContenedorLlaves/HBoxContainer" unique_id=647010059 groups=["etiqueta_mision"]]
 layout_mode = 2
 text = "0/3"
