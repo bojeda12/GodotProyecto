@@ -12,6 +12,11 @@ func _ready():
 func activar_puerta():
 	esta_abierta = true
 	$AnimatedSprite2D.play("abierta")
+	# DESACTIVAR COLISIÓN FÍSICA:
+	# Usamos set_deferred por seguridad para no cambiar físicas a mitad de un frame
+	if has_node("StaticBody2D/CollisionShape2D"):
+		$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
+	print("La puerta física se ha deshabilitado, puedes pasar.")
 
 func _on_body_entered(body):
 	print("--- INTENTO DE ENTRADA por la puerta ---")

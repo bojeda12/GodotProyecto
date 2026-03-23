@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dk6v0pn1urrff"]
+[gd_scene format=3 uid="uid://dk6v0pn1urrff"]
 
 [ext_resource type="Texture2D" uid="uid://d2ikuqxijuout" path="res://asets/enemigos/pez/Attack.png" id="1_1jwxb"]
 [ext_resource type="Script" uid="uid://bsq23llhc12gw" path="res://scripts/enemigo_pez.gd" id="1_k023v"]
@@ -161,21 +161,21 @@ radius = 13.038404
 [sub_resource type="CircleShape2D" id="CircleShape2D_k023v"]
 radius = 39.012817
 
-[node name="EnemigoPez" type="CharacterBody2D" groups=["enemigos"]]
+[node name="EnemigoPez" type="CharacterBody2D" unique_id=1673124821 groups=["enemigos"]]
 script = ExtResource("1_k023v")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1083606692]
 scale = Vector2(0.5242111, 0.54278636)
 sprite_frames = SubResource("SpriteFrames_psoci")
-animation = &"atacar"
+animation = &"nadar"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520259431]
 scale = Vector2(0.4752924, 0.53977287)
 shape = SubResource("CircleShape2D_31jid")
 
-[node name="ZonaDeteccion" type="Area2D" parent="."]
+[node name="ZonaDeteccion" type="Area2D" parent="." unique_id=266256610]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDeteccion"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDeteccion" unique_id=1014812796]
 visibility_layer = 2
 shape = SubResource("CircleShape2D_k023v")
 

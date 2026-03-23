@@ -5,6 +5,7 @@ var splash_escena = preload("res://scenes/splashMision.tscn")
 
 func _ready():
 	check_y_mostrar_splash()
+	Config.poner_musica_juego()
 
 func check_y_mostrar_splash():
 	var config = ConfigFile.new()

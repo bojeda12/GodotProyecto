@@ -172,3 +172,9 @@ func _on_zona_deteccion_body_exited(body):
 	if body == jugador:
 		jugador = null
 		velocity = Vector2.ZERO
+		
+#-------------CAMBIO DE COLOR----------
+
+func cambiar_color(nuevo_color: Color):
+	# Usamos el nodo 'sprite' que ya tienes definido con @onready
+	sprite.modulate = nuevo_color

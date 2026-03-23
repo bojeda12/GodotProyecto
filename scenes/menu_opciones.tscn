@@ -143,8 +143,8 @@ text = "Nota:"
 [node name="Descripcion" type="Label" parent="TextureRect/TextureRect/VBoxContainer/HBoxContainer" unique_id=61478262]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Presiona I para obtener informacion 
-del nivel y P para pausar el juego"
+text = "Cuando tengas duda del nivel puedes
+presionar I para obtener informacion "
 
 [connection signal="value_changed" from="TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="toggled" from="TextureRect/TextureRect/VBoxContainer/PanelContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]

@@ -33,22 +33,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qch6f"]
 size = Vector2(32, 32)
 
-[node name="PuertaFinal" type="Area2D" groups=["puerta"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xb1v"]
+size = Vector2(30.983667, 32.709694)
+
+[node name="PuertaFinal" type="Area2D" unique_id=1582788445 groups=["puerta"]]
 scale = Vector2(0.45185098, 0.48915163)
 collision_mask = 3
 script = ExtResource("1_0xb1v")
 escena_jefe = "uid://bqcbaw5tngxb6"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=334682609]
 sprite_frames = SubResource("SpriteFrames_bt5vn")
 animation = &"abierta"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=280202601]
 shape = SubResource("RectangleShape2D_qch6f")
 
-[node name="Transicion" type="CanvasLayer" parent="."]
+[node name="Transicion" type="CanvasLayer" parent="." unique_id=1696291642]
 
-[node name="ColorRect" type="ColorRect" parent="Transicion"]
+[node name="ColorRect" type="ColorRect" parent="Transicion" unique_id=1256204116]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,5 +59,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=440599729]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1820947856]
+position = Vector2(1.5829457e-06, 0)
+scale = Vector2(0.99999976, 1)
+shape = SubResource("RectangleShape2D_0xb1v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,10 +1,12 @@
 extends Control
 
-# Ruta de la escena de tu primer nivel
+# Ruta de la escena del primer nivel
 var escena_nivel = "res://scenes/game.tscn" 
 var menu_opciones = "res://scenes/menu_opciones.tscn" 
 
 func _ready():
+	Config.quitar_musica_menu()
+	Config.poner_musica_menu()
 	# 1. Conectar botones
 	# Asegúrate de que estos nombres coincidan exactamente con tus nodos en Godot
 	$VBoxContainer/BotonInicio.pressed.connect(_on_inicio_pressed)
