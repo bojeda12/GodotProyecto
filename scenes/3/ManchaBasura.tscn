@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dsc6c8sqomn7r"]
+
+[ext_resource type="Script" uid="uid://d4d2552r1wxhd" path="res://scripts/3/mancha_basura.gd" id="1_rlfg4"]
+[ext_resource type="Texture2D" uid="uid://deym8ckx51a3n" path="res://sprites/sprites/items/item256.png" id="2_rlfg4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xuqp"]
+atlas = ExtResource("2_rlfg4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4sows"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xuqp")
+}],
+"loop": true,
+"name": &"llave",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fqu0"]
+size = Vector2(6, 8)
+
+[node name="mancha_basura" type="Area2D" unique_id=210660492 groups=["basura"]]
+collision_layer = 4
+script = ExtResource("1_rlfg4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1256121972]
+position = Vector2(-0.9999995, 0.99999976)
+scale = Vector2(0.4825819, 0.5538322)
+sprite_frames = SubResource("SpriteFrames_4sows")
+animation = &"llave"
+autoplay = "llave"
+frame_progress = 0.6617805
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1855078221]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_4fqu0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

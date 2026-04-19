@@ -40,7 +40,6 @@ size = Vector2(30.983667, 32.709694)
 scale = Vector2(0.45185098, 0.48915163)
 collision_mask = 3
 script = ExtResource("1_0xb1v")
-escena_jefe = "uid://bqcbaw5tngxb6"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=334682609]
 sprite_frames = SubResource("SpriteFrames_bt5vn")

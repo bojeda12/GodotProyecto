@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://bur2u2akdpk6y"]
+
+[ext_resource type="Texture2D" uid="uid://cmdbub2b7mnao" path="res://asets/explosiones/disparoAgua/water100000.png" id="1_hygxx"]
+[ext_resource type="Script" uid="uid://27fhltjs85pk" path="res://scripts/2/agua_disparo.gd" id="1_nq4b0"]
+[ext_resource type="Texture2D" uid="uid://d2mmrwrahsdo1" path="res://asets/explosiones/disparoAgua/water100001.png" id="2_uhqvb"]
+[ext_resource type="Texture2D" uid="uid://br80x0o6b2od4" path="res://asets/explosiones/disparoAgua/water100002.png" id="3_4jhg7"]
+[ext_resource type="Texture2D" uid="uid://5ehwu5qxukc8" path="res://asets/explosiones/disparoAgua/water100003.png" id="4_tjhdc"]
+[ext_resource type="Texture2D" uid="uid://d2o55td66t73c" path="res://asets/explosiones/disparoAgua/water100004.png" id="5_mm5ib"]
+[ext_resource type="Texture2D" uid="uid://bvxrsyn02cbpa" path="res://asets/explosiones/disparoAgua/water100005.png" id="6_1bcxd"]
+[ext_resource type="Texture2D" uid="uid://db87c7qlt1aqs" path="res://asets/explosiones/disparoAgua/water100006.png" id="7_b5tg7"]
+[ext_resource type="Texture2D" uid="uid://drsn06jnp5uh1" path="res://asets/explosiones/disparoAgua/water100007.png" id="8_onvak"]
+[ext_resource type="Texture2D" uid="uid://c0ctdvqxxw2h5" path="res://asets/explosiones/disparoAgua/water100008.png" id="9_4cndk"]
+[ext_resource type="Texture2D" uid="uid://cdyt1f76lkixe" path="res://asets/explosiones/disparoAgua/water100009.png" id="10_fmgcx"]
+[ext_resource type="Texture2D" uid="uid://dwip3xmul5eai" path="res://asets/explosiones/disparoAgua/water100010.png" id="11_m1mp8"]
+[ext_resource type="Texture2D" uid="uid://bdl42kwrrlsh6" path="res://asets/explosiones/disparoAgua/water100011.png" id="12_ixdyi"]
+[ext_resource type="Texture2D" uid="uid://b4b24ionpr687" path="res://asets/explosiones/disparoAgua/water100012.png" id="13_p3cd6"]
+[ext_resource type="Texture2D" uid="uid://c2tjg2q18jnom" path="res://asets/explosiones/disparoAgua/water100013.png" id="14_ipjtg"]
+[ext_resource type="Texture2D" uid="uid://bcaa81cc24ack" path="res://asets/explosiones/disparoAgua/water100014.png" id="15_e1deh"]
+[ext_resource type="Texture2D" uid="uid://h4jo1uyl6npb" path="res://asets/explosiones/disparoAgua/water100015.png" id="16_ow8ta"]
+[ext_resource type="Texture2D" uid="uid://nqhe60qnnipy" path="res://asets/explosiones/disparoAgua/water100016.png" id="17_defc1"]
+[ext_resource type="Texture2D" uid="uid://di1ghbdf0f7t" path="res://asets/explosiones/disparoAgua/water100017.png" id="18_poorb"]
+[ext_resource type="Texture2D" uid="uid://b3wgsji535ito" path="res://asets/explosiones/disparoAgua/water100018.png" id="19_u0p7b"]
+[ext_resource type="Texture2D" uid="uid://ca2ff1qhgg534" path="res://asets/explosiones/disparoAgua/water100019.png" id="20_eeu1i"]
+[ext_resource type="Texture2D" uid="uid://cg0udwk7dh31a" path="res://asets/explosiones/disparoAgua/water100020.png" id="21_wmtlc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_35wr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hygxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uhqvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4jhg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tjhdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mm5ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1bcxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_b5tg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_onvak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4cndk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fmgcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_m1mp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ixdyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_p3cd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ipjtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_e1deh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ow8ta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_defc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_poorb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_u0p7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_eeu1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wmtlc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nq4b0"]
+radius = 244.0678
+height = 488.1356
+
+[node name="BalaRadioactiva" type="Area2D" unique_id=551469410]
+z_index = 10
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_nq4b0")
+velocidad = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1214469407]
+position = Vector2(-1.9073486e-06, 0)
+rotation = -1.5722517
+scale = Vector2(0.026915956, 0.03991421)
+sprite_frames = SubResource("SpriteFrames_35wr2")
+autoplay = "default"
+frame_progress = 0.940148
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2140386184]
+position = Vector2(0, -1)
+scale = Vector2(0.036666665, 0.049166664)
+shape = SubResource("CapsuleShape2D_nq4b0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2018896626]
+position = Vector2(0, -1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

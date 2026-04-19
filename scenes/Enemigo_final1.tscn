@@ -169,10 +169,7 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="HUD" parent="." unique_id=899875477 instance=ExtResource("21_7qchc")]
 
-[node name="BarraVida" parent="HUD/MarginContainer/VBoxContainer" index="1"]
-value = 0.5
-
-[node name="ContenedorLlaves" parent="HUD" index="1"]
+[node name="ContenedorLlaves" parent="HUD" index="1" unique_id=1401589776]
 visible = false
 
 [editable path="HUD"]

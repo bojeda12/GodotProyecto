@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://cya57c0vt7jeq"]
+
+[ext_resource type="Script" uid="uid://damwrokp6uvdg" path="res://scripts/3/game_3.gd" id="1_35cil"]
+[ext_resource type="Texture2D" uid="uid://dfmqwr5aip8u5" path="res://asets/background/3/1.png" id="3_kuaat"]
+[ext_resource type="Texture2D" uid="uid://bnxd4mbos2h8h" path="res://asets/background/3/2.png" id="4_kuaat"]
+[ext_resource type="Texture2D" uid="uid://drggk6goba17i" path="res://asets/background/3/3.png" id="5_kuaat"]
+[ext_resource type="Texture2D" uid="uid://bxnhmag23rx1v" path="res://asets/background/3/4.png" id="6_goy6q"]
+[ext_resource type="Texture2D" uid="uid://cxflylvej8dfr" path="res://asets/background/3/5.png" id="7_1f4xv"]
+[ext_resource type="Texture2D" uid="uid://cq12ru76hx3tx" path="res://asets/background/3/6.png" id="8_6b5ty"]
+[ext_resource type="PackedScene" uid="uid://cbo86hoqafhjy" path="res://scenes/SpawnerPeces.tscn" id="14_35cil"]
+[ext_resource type="PackedScene" uid="uid://qi1l8j4b4qo6" path="res://scenes/2/pezNaranja.tscn" id="14_f18wx"]
+[ext_resource type="PackedScene" uid="uid://c70hyne4nmb5o" path="res://scenes/3/enemigo_medusa.tscn" id="15_35cil"]
+[ext_resource type="PackedScene" uid="uid://d4ir00yap8qw7" path="res://scenes/item_burbuja.tscn" id="15_xle3p"]
+[ext_resource type="VideoStream" uid="uid://dkb8xvdi6rtpc" path="res://video/El_viaje_del_ajolote.ogv" id="16_xle3p"]
+[ext_resource type="PackedScene" uid="uid://dbuhtv4xmknji" path="res://scenes/puerta_final.tscn" id="26_b0wev"]
+[ext_resource type="PackedScene" uid="uid://duh8vle1w4d00" path="res://scenes/player.tscn" id="31_t00sj"]
+[ext_resource type="PackedScene" uid="uid://bqpxv54ubso61" path="res://scenes/HUD.tscn" id="33_0elsb"]
+[ext_resource type="PackedScene" uid="uid://dyigy8mn2scdm" path="res://scenes/2/anemonaEnemigo.tscn" id="35_dp1ef"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+distance = -266.98965
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bhx41"]
+vertices = PackedVector2Array(2806, 261, 10, 261.9922, 10, 10, 2806, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 272, 2816, 271, 2816, 0)])
+agent_radius = 30.0
+baking_rect = Rect2(0, 0, 2821, 300)
+
+[node name="Game" type="Node2D" unique_id=405332245]
+position = Vector2(1, -1)
+script = ExtResource("1_35cil")
+
+[node name="PuertaFinal" parent="." unique_id=1582788445 instance=ExtResource("26_b0wev")]
+position = Vector2(2707, 115)
+scale = Vector2(1.0776738, 1.2920365)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=655819714]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=818741746]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(388, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1574125279]
+position = Vector2(194.00002, 136.20117)
+scale = Vector2(0.20208333, 0.24962747)
+texture = ExtResource("3_kuaat")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=531593144]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(389, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=568284630]
+position = Vector2(194.5, 137)
+scale = Vector2(0.20260417, 0.24753088)
+texture = ExtResource("4_kuaat")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1769607431]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(385, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=2000150719]
+position = Vector2(194.50002, 135.00002)
+scale = Vector2(0.20052084, 0.24776231)
+texture = ExtResource("5_kuaat")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1531919865]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(389, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=1501087644]
+position = Vector2(194.50003, 134.99998)
+scale = Vector2(0.20260419, 0.24999999)
+texture = ExtResource("6_goy6q")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2060250376]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(388, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" unique_id=155419905]
+position = Vector2(194.00003, 166.99998)
+scale = Vector2(0.20208333, 0.19074072)
+texture = ExtResource("7_1f4xv")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1074295906]
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6" unique_id=1880900221]
+position = Vector2(164, 135.49998)
+scale = Vector2(0.16666664, 0.24907406)
+texture = ExtResource("8_6b5ty")
+
+[node name="Player" parent="." unique_id=715425430 instance=ExtResource("31_t00sj")]
+position = Vector2(1877, 140)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=668938407]
+position = Vector2(-1, -7)
+rotation = -0.0018696589
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 2715
+limit_bottom = 270
+position_smoothing_enabled = true
+
+[node name="LimitesVerticales" type="StaticBody2D" parent="." unique_id=1018150345]
+rotation = -3.0833893e-05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitesVerticales" unique_id=1630445298]
+position = Vector2(-0.00015416947, 5)
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+
+[node name="LimitesVerticales2" type="StaticBody2D" parent="." unique_id=115017463]
+position = Vector2(19, -156)
+rotation = -3.1357567
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitesVerticales2" unique_id=353031547]
+position = Vector2(18.531063, -423.1154)
+rotation = -0.0022441368
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+
+[node name="LimitesIzquierda" type="StaticBody2D" parent="." unique_id=1628601551]
+position = Vector2(-157, 100)
+rotation = -4.7193704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitesIzquierda" unique_id=1763890613]
+position = Vector2(18.531063, -423.1154)
+rotation = -0.0022441368
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+
+[node name="LimitesIzquierda2" type="StaticBody2D" parent="." unique_id=1971434422]
+position = Vector2(2871, 140.99998)
+rotation = -1.5984468
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitesIzquierda2" unique_id=48471067]
+position = Vector2(18.531063, -423.1154)
+rotation = -0.0022441368
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+
+[node name="HUD" parent="." unique_id=380273778 instance=ExtResource("33_0elsb")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=389163908]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_bhx41")
+
+[node name="AnemonaEnemigo" parent="." unique_id=273420777 instance=ExtResource("35_dp1ef")]
+visible = false
+position = Vector2(539, 139)
+esperar_al_jefe = true
+
+[node name="AnemonaEnemigo2" parent="." unique_id=1076148953 instance=ExtResource("35_dp1ef")]
+visible = false
+position = Vector2(1154, 105)
+esperar_al_jefe = true
+
+[node name="EnemigoPez" parent="." unique_id=1673124821 instance=ExtResource("14_f18wx")]
+position = Vector2(225, 165)
+
+[node name="EnemigoMedusa" parent="." unique_id=917725441 instance=ExtResource("15_35cil")]
+position = Vector2(1768.0002, 133)
+
+[node name="SpawnerPeces" parent="." unique_id=545650976 instance=ExtResource("14_35cil")]
+position = Vector2(1456, 135)
+pez_escena = ExtResource("15_xle3p")
+radio_generacion = 1500.0
+limite_global = 100
+
+[node name="Timer" parent="SpawnerPeces" index="0" unique_id=471927874]
+wait_time = 0.066
+
+[node name="InterfazVideo" type="CanvasLayer" parent="." unique_id=1302561117]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="InterfazVideo" unique_id=1347928581]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("16_xle3p")
+expand = true
+
+[connection signal="body_entered" from="PuertaFinal" to="." method="_on_puerta_final_body_entered"]
+[connection signal="finished" from="InterfazVideo/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+
+[editable path="SpawnerPeces"]

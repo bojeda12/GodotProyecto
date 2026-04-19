@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://dyigy8mn2scdm"]
+
+[ext_resource type="Texture2D" uid="uid://bg2yaxynv6xe2" path="res://asets/enemigos/2/anemonaEnemigo.png" id="1_aowno"]
+[ext_resource type="Script" uid="uid://dsnbijcelbhfo" path="res://scripts/2/anemona_enemigo.gd" id="1_k72o4"]
+[ext_resource type="Texture2D" uid="uid://do5p5qkqa4fs1" path="res://asets/splash/burbuja.png" id="3_2ni1j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vws5a"]
+atlas = ExtResource("1_aowno")
+region = Rect2(170, 0, 170, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suum4"]
+atlas = ExtResource("1_aowno")
+region = Rect2(394, 0, 197, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la21w"]
+atlas = ExtResource("1_aowno")
+region = Rect2(639, 0, 213, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrpau"]
+atlas = ExtResource("1_aowno")
+region = Rect2(876, 0, 219, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtumy"]
+atlas = ExtResource("1_aowno")
+region = Rect2(1130, 0, 226, 255)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1805l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vws5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suum4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la21w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrpau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtumy")
+}],
+"loop": true,
+"name": &"abrir",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k72o4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmddh"]
+resource_local_to_scene = true
+radius = 2.4876213
+
+[sub_resource type="Curve" id="Curve_k72o4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.114503816, 0.82320005), -1.3624002, -1.3624002, 0, 0, Vector2(0.23282444, 0.62560004), -1.0862068, -1.0862068, 0, 0, Vector2(0.5144928, 0.46401805), 0.0, 0.0, 0, 0, Vector2(0.7061069, 0.46960008), 0.0, 0.0, 0, 0, Vector2(0.84732825, 0.58400005), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Gradient" id="Gradient_2ni1j"]
+offsets = PackedFloat32Array(0.332, 0.608, 0.956)
+colors = PackedColorArray(0.84235317, 0.6687066, 0.94182473, 1, 8.8709334e-07, 0.8402578, 0.94972664, 1, 0.22178113, 0.8173119, 1.0236375, 0)
+
+[node name="AnemonaEnemigo" type="CharacterBody2D" unique_id=273420777 groups=["anemonas"]]
+collision_layer = 2
+script = ExtResource("1_k72o4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=28746132]
+position = Vector2(0, -1)
+scale = Vector2(0.105285145, 0.08007812)
+sprite_frames = SubResource("SpriteFrames_1805l")
+animation = &"abrir"
+frame_progress = 0.4856884
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1721848042]
+shape = SubResource("CircleShape2D_k72o4")
+
+[node name="ZonaRealentizacion" type="Area2D" parent="." unique_id=556451426]
+position = Vector2(-1, -2)
+scale = Vector2(1.312, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaRealentizacion" unique_id=649701763]
+position = Vector2(-0.7616148, 2)
+scale = Vector2(9.498016, 12.487806)
+shape = SubResource("CircleShape2D_vmddh")
+
+[node name="OndaParticulas" type="CPUParticles2D" parent="." unique_id=711414829]
+amount = 80
+texture = ExtResource("3_2ni1j")
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+damping_min = 20.0
+damping_max = 50.0
+scale_amount_curve = SubResource("Curve_k72o4")
+color = Color(0.76878494, 0.17634848, 0.79154265, 1)
+color_ramp = SubResource("Gradient_2ni1j")
+
+[node name="TimerEspera" type="Timer" parent="." unique_id=1720892348]
+wait_time = 10.0
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="TimerEspera" to="." method="_on_timer_espera_timeout"]

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://baemcrd0s75fk" path="res://asets/splash/barravidaLlena.png" id="2_1etfg"]
 [ext_resource type="Texture2D" uid="uid://l3rtt6oby7tg" path="res://asets/splash/barraBurbuja.png" id="3_1etfg"]
 [ext_resource type="Texture2D" uid="uid://dypqawuiw3ki7" path="res://asets/splash/llaveunica.png" id="4_7hsmw"]
+[ext_resource type="Texture2D" uid="uid://w46wyoi6dcbe" path="res://asets/splash/mancha.png" id="5_nysna"]
 
 [node name="HUD" type="CanvasLayer" unique_id=714880501]
 
@@ -62,3 +63,17 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="ContenedorLlaves/HBoxContainer" unique_id=647010059 groups=["etiqueta_mision"]]
 layout_mode = 2
 text = "0/3"
+
+[node name="ManchaTinta" type="TextureRect" parent="." unique_id=101580699]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -103.0
+offset_right = 146.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_nysna")
+expand_mode = 1

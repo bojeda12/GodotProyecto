@@ -1,17 +1,17 @@
 extends CharacterBody2D
 
 @export var velocidad_maxima = 150.0
+var esta_ralentizado = false
 @export var aceleracion = 0.05
 @export var friccion = 0.02
 @export var fuerza_salto = -100.0  
 var invulnerable = false
 @onready var sprite = $AnimatedSprite2D 
 
-# Referencias al HUD
-# Usamos la ruta que te dio Godot al arrastrar
 @onready var barra_vida = $"../HUD/MarginContainer/VBoxContainer/BarraVida"
 @onready var barra_burbujas = $"../HUD/MarginContainer/VBoxContainer/BarraBurbujas"
 @onready var etiqueta_llaves = $"../HUD/ContenedorLlaves/HBoxContainer/Label"
+@onready var mancha_visual = $"../HUD/ManchaTinta"
 
 @export var max_burbujas = 6
 var burbujas_actuales = 3 # Cambia a 3 para que empiece con algo de carga
@@ -30,6 +30,11 @@ var splash_muerte = preload("res://scenes/endSplash.tscn")
 
 
 func _ready():
+	ondas_activas = 0
+	esta_ralentizado = false
+	velocidad_maxima = 150.0
+	modulate = Color(1, 1, 1)
+	actualizar_barras()
 	efecto_disparo.hide()
 	# 1. ACTUALIZAR AL INICIO: Para que las barras no aparezcan vacías al empezar
 	actualizar_barras()
@@ -53,7 +58,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		disparar_con_efecto()
 	if Input.is_action_just_pressed("ataque_especial"): # Por defecto es Espacio
-		disparar_espiral(10) # Disparamos 12 burbujas para un círculo denso
+		disparar_espiral(15) # Disparamos 12 burbujas para un círculo denso
 
 # --- FUNCIONES DE LA BARRA ---
 
@@ -171,9 +176,13 @@ func disparar_espiral(cantidad: int = 12):
 
 # Función extra para cuando recojas un objeto de burbuja en el mapa
 func recolectar_burbuja():
+	# Verificamos que max_burbujas no sea nulo antes de comparar
+	if max_burbujas == null:
+		max_burbujas = 6 # Valor por defecto si algo falla
+		
 	if burbujas_actuales < max_burbujas:
 		burbujas_actuales += 1
-		actualizar_barras() # Esto refresca la UI inmediatamente
+		actualizar_barras()
 		print("Burbuja recolectada: ", burbujas_actuales)
 func recolectar_llave():
 	llaves_recolectadas += 1
@@ -207,3 +216,55 @@ func recolectar_llave():
 		# Buscamos en el grupo "puerta" y llamamos a activar_puerta
 		get_tree().call_group("puerta", "activar_puerta")
 		print("¡Misión cumplida! La puerta al jefe está abierta.")
+		
+var ondas_activas = 0 
+
+func aplicar_ralentizacion(activar: bool):
+	if activar:
+		ondas_activas += 1
+	else:
+		ondas_activas -= 1
+	
+	# Evitamos que el contador baje de 0 por errores de señales
+	if ondas_activas < 0: ondas_activas = 0
+	
+	if ondas_activas > 0:
+		esta_ralentizado = true
+		velocidad_maxima = 50.0
+		modulate = Color(0.5, 0.8, 1.0)
+	else:
+		esta_ralentizado = false
+		velocidad_maxima = 150.0
+		modulate = Color(1, 1, 1)
+func _on_zona_recoleccion_body_entered(body):
+	# Verificamos si lo que tocamos es del grupo "comida"
+	if body.is_in_group("comida"):
+		recuperar_vida_completa()
+		
+		# Llamamos a la función de desaparecer del pez
+		if body.has_method("ser_comido"):
+			body.ser_comido()
+		else:
+			body.queue_free()
+
+func recuperar_vida_completa():
+	salud = 3.0 # Llenamos la vida al máximo
+	actualizar_barras()
+	
+	# Feedback visual: un destello verde para saber que funcionó
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(0, 1, 0), 0.1)
+	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.1).set_delay(0.2)
+	print("¡Vida restaurada al máximo!")
+func manchar_pantalla():
+	# Creamos un Tween para manejar la animación de la mancha
+	var t = create_tween()
+	
+	# 1. La mancha aparece casi opaca en 0.2 segundos
+	t.tween_property(mancha_visual, "modulate:a", 0.9, 0.2)
+	
+	# 2. Se queda estática por 3 segundos (el tiempo que el jugador estará "ciego")
+	t.tween_interval(3.0)
+	
+	# 3. Se desvanece lentamente en 1.5 segundos
+	t.tween_property(mancha_visual, "modulate:a", 0.0, 2.0)

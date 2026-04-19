@@ -215,13 +215,17 @@ func soltar_recompensa():
 		var nueva_llave = llave_scene.instantiate()
 		get_parent().add_child(nueva_llave)
 		nueva_llave.global_position = global_position
+		nueva_llave.es_llave_final = true
 		
-		# --- AQUÍ ACTIVAMOS LA MAGIA ---
-		# Le decimos a esta instancia específica que SÍ es la final
-		#if "es_llave_final" in nueva_llave:
-			#nueva_llave.es_llave_final = true
-		nueva_llave.es_llave_final = true 
-		print("Soltando llave FINAL")
+		# --- DETECCIÓN POR ARCHIVO .TSCN ---
+		var ruta_archivo = get_tree().current_scene.scene_file_path
+		
+		if "res://scenes/Enemigo_final1.tscn" in ruta_archivo:
+			nueva_llave.escena_siguiente_nivel = "res://scenes/2/game2.tscn"
+		elif "game2.tscn" in ruta_archivo:
+			nueva_llave.escena_siguiente_nivel = "res://scenes/3/game3.tscn"
+		else:
+			print("no hay escena")
 
 
 func _on_zona_danina_body_entered(body):

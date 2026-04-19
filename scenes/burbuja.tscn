@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d4es732c8usmk" path="res://scripts/burbuja.gd" id="2_q1ujp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fcgo"]
-radius = 5.7639914
+radius = 3.842661
 
 [node name="Area2D" type="Area2D" unique_id=484495170 groups=["burbujas"]]
 scale = Vector2(1.0409454, 1.0509686)

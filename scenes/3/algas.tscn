@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cljguhk3wp0ae"]
+
+[ext_resource type="Texture2D" uid="uid://bipojxs3jl7ed" path="res://asets/ajolote/algas.png" id="1_db57l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c46w"]
+atlas = ExtResource("1_db57l")
+region = Rect2(0, 146, 56, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhn4q"]
+atlas = ExtResource("1_db57l")
+region = Rect2(56, 146, 56, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ia4v"]
+atlas = ExtResource("1_db57l")
+region = Rect2(112, 146, 56, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igiep"]
+atlas = ExtResource("1_db57l")
+region = Rect2(168, 146, 56, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vglk"]
+atlas = ExtResource("1_db57l")
+region = Rect2(280, 146, 56, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsnhv"]
+atlas = ExtResource("1_db57l")
+region = Rect2(336, 146, 56, 73)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2p4p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c46w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhn4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ia4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igiep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vglk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsnhv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08d7q"]
+radius = 14.0
+height = 42.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=622160952]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=245266595]
+sprite_frames = SubResource("SpriteFrames_v2p4p")
+autoplay = "default"
+frame_progress = 0.13716269
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1722560806]
+position = Vector2(3, -4)
+shape = SubResource("CapsuleShape2D_08d7q")

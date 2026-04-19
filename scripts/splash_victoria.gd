@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var btn_reintentar = $TextureRect/VBoxContainer/HBoxContainer/BtnContinuar
 @onready var btn_salir = $TextureRect/VBoxContainer/HBoxContainer/BtnSalir
 
+var proxima_escena: String = ""
+
 func _ready():
 	# Configuración inicial
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -23,7 +25,10 @@ func _ready():
 
 func _on_btn_continuar_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/menu_inicio.tscn")
+	if proxima_escena != "":
+		get_tree().change_scene_to_file(proxima_escena)
+	else:
+		get_tree().change_scene_to_file("res://scenes/menu_inicio.tscn")
 
 
 func _on_btn_salir_pressed() -> void:

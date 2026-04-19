@@ -6,7 +6,7 @@ var tiempo_desde_ultima_recarga = 0.0
 func _ready():
 	# 1. Llamamos al _ready original (para que cargue el HUD y lo demás)
 	super._ready() 
-	
+	max_burbujas = 6
 	# 2. Forzamos el inicio con 6 burbujas solo en esta escena
 	burbujas_actuales = 6
 	actualizar_barras() # Para que la barra azul se vea llena desde el segundo 1

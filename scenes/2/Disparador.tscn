@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dquhcjtkxlolh"]
+
+[ext_resource type="Script" uid="uid://c6y3whj8ibj7h" path="res://scripts/2/disparador.gd" id="1_f8y0s"]
+
+[node name="DisparadorTuberia" type="Node2D" unique_id=1857657898]
+script = ExtResource("1_f8y0s")
+
+[node name="PuntoSalida" type="Marker2D" parent="." unique_id=2142870363]
+
+[node name="TimerDisparo" type="Timer" parent="." unique_id=1671602824]
+autostart = true
+
+[connection signal="timeout" from="TimerDisparo" to="." method="_on_timer_disparo_timeout"]
